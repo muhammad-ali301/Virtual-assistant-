@@ -8,7 +8,9 @@ import wikipedia
 import pywhatkit
 import pyautogui
 import time
-import pyjokes   # jokes ke liye rakha hai
+import pyjokes  
+from dotenv import load_dotenv
+load_dotenv()
 
 # ================== SPEAK FUNCTION ==================
 def speak(text, lang="en", accent="co.uk", slow=False):
@@ -36,7 +38,7 @@ contacts = {
 
 # ================== WEATHER FUNCTION ==================
 def get_weather(city):
-    api_key = "28827ddea6957e89d688f50fabef4775"  # your OpenWeatherMap API key
+    api_key = os.getenv("OPENWEATHER_API_KEY")
     base_url = "http://api.openweathermap.org/data/2.5/weather"
     complete_url = f"{base_url}?q={city}&appid={api_key}&units=metric"
 
@@ -188,3 +190,4 @@ while True:
 
     except Exception as e:
         print(f"Error: {e}")
+
